@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Todo service/* autowire="constructor" */  -->
+    <bean id="todoService" class="com.thoughtclan.springdemos.services.impl.TodoServiceImpl"
+    	init-method="init" destroy-method="destroy" autowire="constructor">
+    	<property name="todoPrefix" value="${todo.prefix}" />
+    	<property name="timezone" value="#{ systemEnvironment['user.timezone'] }" />
+    </bean>
+
+	<!-- Todo DAO -->
+	<bean id="defaultTodoDao" class="com.thoughtclan.springdemos.data.impl.InMemoryTodoDaoImpl" init-method="init">
+    </bean>
+    <alias name="defaultTodoDao" alias="todoDao" />
+
+	<!-- Post processors -->
+	<bean class="com.thoughtclan.springdemos.postprocessors.LoggingBeanPostProcessor">
+    </bean>
+    <bean class="com.thoughtclan.springdemos.postprocessors.LoggingBeanFactoryPostProcessor">
+    </bean>
+    
+    <!-- read property file -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations" value="classpath:config.properties"/>
+	</bean>
+</beans>

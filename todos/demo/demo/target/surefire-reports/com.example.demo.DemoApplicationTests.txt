@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.DemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.853 s <<< FAILURE! - in com.example.demo.DemoApplicationTests
+contextLoads  Time elapsed: 0.009 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'todoControl': Unsatisfied dependency expressed through field 'todoReposoit'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'todoReposoit' defined in com.example.demo.repo.TodoReposoit defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.example.demo.model.Todo
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'todoReposoit' defined in com.example.demo.repo.TodoReposoit defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.example.demo.model.Todo
+Caused by: java.lang.IllegalArgumentException: Not a managed type: class com.example.demo.model.Todo
+
